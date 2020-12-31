@@ -524,6 +524,7 @@ class WorldObject : public Object
 
         void SetOrientation(float orientation);
 
+        Position const& GetPosition() const { return m_position; }
         float GetPositionX() const { return m_position.x; }
         float GetPositionY() const { return m_position.y; }
         float GetPositionZ() const { return m_position.z; }
@@ -679,7 +680,9 @@ class WorldObject : public Object
         bool isActiveObject() const { return IsActiveObject(); } // This is for Eluna to build. Should be removed in the future!
 
         void SetActiveObjectState(bool active);
-
+#ifdef ENABLE_PLAYERBOTS
+        GameObject* FindNearestGameObject(uint32 uiEntry, float fMaxSearchRange) const;
+#endif
         ViewPoint& GetViewPoint() { return m_viewPoint; }
 
         // ASSERT print helper

@@ -114,7 +114,11 @@ LIST(APPEND SRC_GRP_BOTS ${Playerbot_Generic})
 file(GLOB Playerbot_Triggers ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/triggers/*.cpp ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/triggers/*.h)
 source_group("Player Bot\\Strategies\\Triggers" FILES ${Playerbot_Triggers})
 LIST(APPEND SRC_GRP_BOTS ${Playerbot_Triggers})
-   
+ 
+#Tactics files
+file(GLOB Playerbot_Tactics ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/tactics/*.cpp ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/tactics/*.h)
+    source_group("Player Bot\\Strategies\\Tactics" FILES ${Playerbot_Tactics})
+    LIST(APPEND SRC_GRP_BOTS ${Playerbot_Tactics})
 
 #Value files
 file(GLOB Playerbot_Values ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/values/*.cpp ${CMAKE_SOURCE_DIR}/src/modules/Bots/playerbot/strategy/values/*.h)

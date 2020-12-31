@@ -11479,3 +11479,14 @@ void Unit::ProhibitSpellSchool(SpellSchoolMask mask, uint32 unTimeMs)
             m_schoolAllowedSince[i] = when;
     }
 }
+#ifdef ENABLE_PLAYERBOTS
+Player* Unit::FindNearestFriendlyPlayer(float range) const
+{
+    Player* target = nullptr;
+    MaNGOS::AnyFriendlyUnitInObjectRangeCheck check(this, range);
+    MaNGOS::PlayerSearcher<MaNGOS::AnyFriendlyUnitInObjectRangeCheck> searcher(target, check);
+    Cell::VisitWorldObjects(this, searcher, range);
+
+    return target;
+}
+#endif

@@ -3478,6 +3478,9 @@ class Unit : public WorldObject
         void SetCurrentCastedSpell(Spell* pSpell);
         bool IsSchoolAllowed(SpellSchoolMask mask) const;
         virtual void ProhibitSpellSchool(SpellSchoolMask idSchoolMask, uint32 unTimeMs);
+#ifdef ENABLE_PLAYERBOTS
+        Player* FindNearestFriendlyPlayer(float range) const;
+#endif
         void InterruptSpell(CurrentSpellTypes spellType, bool withDelayed = true);
         void FinishSpell(CurrentSpellTypes spellType, bool ok = true);
 

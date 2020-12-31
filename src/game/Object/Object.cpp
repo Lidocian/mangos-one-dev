@@ -2110,3 +2110,22 @@ void WorldObject::SetActiveObjectState(bool active)
     }
     m_isActiveObject = active;
 }
+#ifdef ENABLE_PLAYERBOTS
+GameObject* WorldObject::FindNearestGameObject(uint32 uiEntry, float fMaxSearchRange) const
+{
+    GameObject* pGo = nullptr;
+
+    CellPair pair(MaNGOS::ComputeCellPair(GetPositionX(), GetPositionY()));
+    Cell cell(pair);
+    cell.SetNoCreate();
+
+    MaNGOS::NearestGameObjectEntryInObjectRangeCheck go_check(*this, uiEntry, fMaxSearchRange);
+    MaNGOS::GameObjectLastSearcher<MaNGOS::NearestGameObjectEntryInObjectRangeCheck> searcher(pGo, go_check);
+
+    TypeContainerVisitor<MaNGOS::GameObjectLastSearcher<MaNGOS::NearestGameObjectEntryInObjectRangeCheck>, GridTypeMapContainer> go_searcher(searcher);
+
+    cell.Visit(pair, go_searcher, *(GetMap()), *this, fMaxSearchRange);
+
+    return pGo;
+}
+#endif

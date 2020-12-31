@@ -151,7 +151,15 @@ enum BG_AV_Nodes
 // 3 = horde control
 // 4 = neutral assaulted
 // 5 = neutral control
-
+enum BG_AV_Event_Control_State
+{
+    ALLIANCE_ASSAULTED = 0,
+    ALLIANCE_CONTROLLED = 1,
+    HORDE_ASSAULTED = 2,
+    HORDE_CONTROLLED = 3,
+    NEUTRAL_ASSAULTED = 4,
+    NEUTRAL_CONTROLLED = 5,
+};
 // graves have special creatures - their defenders can be in 4 different states
 // through some quests with armor scraps
 // so i use event1=BG_AV_NODES_MAX+node (15-21)
